@@ -1,0 +1,93 @@
+.banner-sistema {
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+  text-align: center;
+  background-color: #fff;
+  color: #616161;
+}
+.card {
+  padding: 2rem;
+  height: 100%;
+  margin-bottom: 1rem;
+  box-shadow: 3px 3px 5px #616161;
+  font-size: 1.3rem;
+}
+.card li {
+  font-size: 1.2rem;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.cards-section {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.cards-section p {
+  font-size: 1.3rem;
+  /* text-shadow: 2px 1px 2px black; */
+  color: #616161;
+  font-weight: bold;
+}
+
+#banner-text {
+  animation: move-banner-texto 1.5s ease-out forwards;
+}
+
+@keyframes move-banner-texto {
+  from {
+    opacity: 0;
+    transform: translate3d(60%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+#banner-img {
+  animation: move-banner-img 1.5s ease-out forwards;
+}
+@keyframes move-banner-img {
+  from {
+    opacity: 0;
+    transform: translate3d(-60%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.card{
+  animation: move-card 1.5s ease-out forwards;
+}
+@keyframes move-card {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 60%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+#texto-gerencie{
+  animation: move-texto-gerencie 3s ease-out forwards;
+}
+@keyframes move-texto-gerencie {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,13 @@
+tr th {
+  text-align: center;
+}
+
+.tabela-container{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+button {
+  margin-left: 2px;
+  margin-right: 2px;
+}

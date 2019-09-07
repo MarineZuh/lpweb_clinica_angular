@@ -1,0 +1,9 @@
+i {
+  margin-right: 0.25rem;
+}
+a:hover {
+  cursor: pointer;
+}
+a {
+  user-select: none;
+}

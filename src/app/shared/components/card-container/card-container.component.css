@@ -1,0 +1,29 @@
+.body {
+  margin-top: 30px;
+  margin-bottom: 20px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  background-color: #fff;
+  box-shadow: 3px 3px 5px #616161;
+}
+
+p {
+  color: #616161;
+  margin-bottom: 2px;
+
+}
+
+.titulo {
+  font-size: 25px;
+  font-weight: bold;
+}
+.subtitulo {
+  font-style: italic;
+  font-size: 15px;
+}
+
+

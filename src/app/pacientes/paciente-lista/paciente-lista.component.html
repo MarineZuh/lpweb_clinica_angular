@@ -1,0 +1,74 @@
+<app-shared-card-container titulo="Lista de Pacientes" [subtitulo]="qntTotal + ' pacientes cadastrados!'">
+
+
+  <p-toolbar>
+    <div class="ui-toolbar-group-left">
+      <button pButton type="button" label="Filtros" icon="pi pi-filter" (click)="toggleFiltros()" [disabled]="pacientes.length === 0"></button>
+    </div>
+    <div class="ui-toolbar-group-right">
+      <button pButton type="button" label="Novo Paciente" icon="pi pi-plus" (click)="novoPaciente()"></button>
+      <button pButton type="button" label="Editar Paciente" icon="pi pi-pencil" [disabled]="paciente === null"
+        (click)="alterarPaciente()"></button>
+      <button pButton type="button" label="Remover Paciente" icon="pi pi-times" class="ui-button-danger"
+        [disabled]="paciente === null" (click)="removerPaciente()"></button>
+    </div>
+  </p-toolbar>
+
+  <div class="tabela-container">
+    <p-table [columns]="colunas" [value]="pacientes" [resizableColumns]="true" columnResizeMode="expand"
+      [loading]="loading" [scrollable]="true" selectionMode="single" [(selection)]="paciente" dataKey="id">
+      <ng-template pTemplate="colgroup" let-columns>
+        <colgroup>
+          <col *ngFor="let col of columns" style="width:200px">
+        </colgroup>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns" pResizableColumn>
+            {{col.cabecalho}}
+          </th>
+        </tr>
+        <tr *ngIf="exibirFiltros">
+          <th *ngFor="let col of columns">
+            <input pInputText type="text" (input)="filtro($event.target.value, col.atributo)">
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns" class="ui-resizable-column">
+            {{rowData[col.atributo]}}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+          <td [attr.colspan]="columns.length" class="text-center">
+            Nenhum paciente encontrado
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <p-paginator [rows]="qntLinhas" [totalRecords]="qntTotal" [rowsPerPageOptions]="[5,10,20,30]"
+    (onPageChange)="paginacao($event)"></p-paginator>
+</app-shared-card-container>
+
+
+<p-toast position="center" key="confirm" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center">
+            <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+            <h3>{{message.summary}}</h3>
+            <p>{{message.detail}}</p>
+        </div>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-6">
+                <button type="button" pButton (click)="onConfirm()" label="Confirmar" class="ui-button-success"></button>
+            </div>
+            <div class="ui-g-6">
+                <button type="button" pButton (click)="onReject()" label="Cancelar" class="ui-button-secondary"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>

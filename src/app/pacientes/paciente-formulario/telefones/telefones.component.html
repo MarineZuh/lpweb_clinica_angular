@@ -1,0 +1,63 @@
+<ng-container
+  *ngFor="let telefone of telefonesFormArray.controls; let i = index;"
+>
+  <div class="form-row telefone-row">
+    <div class="form-group col-sm-6 col-md-3">
+      <span class="ui-float-label">
+        <input
+          class="largura-max"
+          id="telefone"
+          type="text"
+          pInputText
+          [formControl]="telefone.get('numero')"
+        />
+        <label for="telefone">Telefone</label>
+      </span>
+    </div>
+    <div class="form-group col-sm-6 col-md-3">
+      <span class="ui-float-label">
+        <input
+          class="largura-max"
+          id="tipo"
+          type="text"
+          pInputText
+          [formControl]="telefone.get('tipo')"
+        />
+        <label for="tipo">Tipo</label>
+      </span>
+    </div>
+    <div class="form-group col-sm-6 col-md-3">
+      <span class="ui-float-label">
+        <input
+          class="largura-max"
+          id="contato"
+          type="text"
+          pInputText
+          [formControl]="telefone.get('nomeContato')"
+        />
+        <label for="contato">Nome do Contato</label>
+      </span>
+    </div>
+    <div class="form-group col-sm-6 col-md-2">
+      <button
+        pButton
+        type="button"
+        label="Remover"
+        (click)="removeItem(i)"
+        class="ui-button-danger"
+      ></button>
+    </div>
+
+  </div>
+  <div class="divisor-telefone" *ngIf="telefonesFormArray.controls.length > 1">
+      <hr >
+    </div>
+</ng-container>
+<div class="botoes">
+  <button
+    pButton
+    type="button"
+    label="Adicionar telefone"
+    (click)="addItem(criaItem())"
+  ></button>
+</div>

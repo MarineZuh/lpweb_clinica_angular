@@ -1,0 +1,47 @@
+.largura-max{
+  width: 100%;
+}
+
+.form-row {
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+
+.ui-g {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.botoes button{
+  margin: 2px;
+}
+
+
+input.ng-invalid.ng-touched{
+  border-color: #e62a10;
+}
+input.ng-invalid.ng-touched + label{
+  color: #e62a10;
+}
+p-calendar.ng-invalid.ng-touched ::ng-deep.ui-inputtext {
+  border-color: #e62a10;
+}
+p-calendar.ng-invalid.ng-touched + label {
+  color: #e62a10;
+}
+p-radiobutton.ng-invalid.ng-touched  {
+  color: #e62a10;
+}
+
+.telefone-row > .form-group {
+  margin-bottom: 2px;
+}
+.divisor-telefone > hr {
+  margin: 5px 0px;
+  width: 85%;
+}
+.divisor-telefone {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}

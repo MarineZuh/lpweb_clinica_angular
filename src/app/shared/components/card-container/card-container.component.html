@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="body">
+    <ng-container *ngIf="titulo">
+      <p class="titulo">{{ titulo }}</p>
+      <ng-container *ngIf="subtitulo">
+        <p class="subtitulo">{{ subtitulo }}</p>
+      </ng-container>
+      <hr />
+    </ng-container>
+    <ng-content></ng-content>
+  </div>
+</div>
