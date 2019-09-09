@@ -7,15 +7,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 
-import * as COMPONENTS from './components/index';
+import { COMPONENTS } from './components/index';
 
 
 @NgModule({
   declarations: [
     // Components
-    COMPONENTS.BarraNavegacaoComponent,
-    COMPONENTS.RodapeComponent,
-    COMPONENTS.CardContainerComponent,
+    COMPONENTS
   ],
   imports: [
     // Angular:
@@ -32,9 +30,7 @@ import * as COMPONENTS from './components/index';
     ReactiveFormsModule,
     HttpClientModule,
     // Components:
-    COMPONENTS.BarraNavegacaoComponent,
-    COMPONENTS.RodapeComponent,
-    COMPONENTS.CardContainerComponent,
+    COMPONENTS,
     // NGPRIME:
     ButtonModule,
     ToastModule,

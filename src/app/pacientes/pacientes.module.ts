@@ -11,14 +11,12 @@ import {FieldsetModule} from 'primeng/fieldset';
 import { SharedModule } from '@shared/shared.module';
 import { PacientesRoutingModule } from './pacientes-routing.module';
 import { PacienteResolver } from './resolvers/paciente.resolver';
-import * as COMPONENTS from './index';
+import { COMPONENTS } from './index';
 
 
 @NgModule({
   declarations: [
-    COMPONENTS.PacienteFormularioComponent,
-    COMPONENTS.PacienteListaComponent,
-    COMPONENTS.TelefonesComponent
+    COMPONENTS
   ],
   imports: [
     SharedModule,

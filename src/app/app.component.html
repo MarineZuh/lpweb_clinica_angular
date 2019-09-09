@@ -1,21 +1,22 @@
-<p-toast [style]="{marginTop: '80px'}" position="top-center" key="msgs"></p-toast>
-<p-toast  position="center" key="process" modal="true" [baseZIndex]="5000">
+<p-toast
+  [style]="{ marginTop: '80px' }"
+  position="top-center"
+  key="msgs"
+></p-toast>
+<p-toast position="center" key="process" modal="true" [baseZIndex]="5000">
   <ng-template let-message pTemplate="message">
     <div style="text-align: center">
       <i id="spinner" class="fa fa-circle-o-notch" aria-hidden="true"></i>
-
-
-        <h3>{{message.summary}}</h3>
-        <p>{{message.detail}}</p>
-
+      <h3>{{ message.summary }}</h3>
+      <p>{{ message.detail }}</p>
     </div>
-</ng-template>
-
+  </ng-template>
 </p-toast>
+
 <app-shared-barra-navegacao></app-shared-barra-navegacao>
 
 <div class="conteudo">
   <router-outlet></router-outlet>
 </div>
-<app-shared-rodape></app-shared-rodape>
 
+<app-shared-rodape></app-shared-rodape>
