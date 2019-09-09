@@ -1,8 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { finalize, debounceTime } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
+import {
+  finalize,
+  debounceTime,
+  map,
+  distinctUntilChanged,
+  tap
+} from 'rxjs/operators';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 import { Paciente, DadosPaginados, Filtro } from '@shared/models';
@@ -30,7 +36,7 @@ export class PacienteListaComponent implements OnInit, OnDestroy {
   exibirFiltros = false;
 
   filtrosTabela = new Map<string, Filtro>();
-  filtrosSubject = new Subject<any>();
+  filtrosSubject = new Subject<string>();
   subFiltroSubject: Subscription;
 
   constructor(
@@ -49,7 +55,12 @@ export class PacienteListaComponent implements OnInit, OnDestroy {
     ];
     this.buscaPacientes();
     this.subFiltroSubject = this.filtrosSubject
-      .pipe(debounceTime(1000))
+      .pipe(
+        debounceTime(600),
+        map(valor => valor.trim()),
+        distinctUntilChanged(),
+        tap(valor => console.log(`busca por ${valor}`))
+      )
       .subscribe(v => {
         console.log('chamou');
         this.buscaPacientes();
@@ -84,13 +95,13 @@ export class PacienteListaComponent implements OnInit, OnDestroy {
   }
 
   filtro(valor, atributo) {
-    console.log({ valor, atributo });
+    // console.log({ valor, atributo });
     if (valor === null || valor === '') {
       this.filtrosTabela.delete(atributo);
     } else {
       this.filtrosTabela.set(atributo, new Filtro(atributo, valor));
     }
-    this.filtrosSubject.next();
+    this.filtrosSubject.next(valor);
   }
   toggleFiltros() {
     this.exibirFiltros = !this.exibirFiltros;
@@ -98,9 +109,11 @@ export class PacienteListaComponent implements OnInit, OnDestroy {
   }
 
   paginacao(event) {
-    this.qntLinhas = event.rows;
-    this.pagina = event.page;
-    this.filtrosSubject.next();
+    if (event.page !== this.pagina || this.qntLinhas !== event.rows) {
+      this.qntLinhas = event.rows;
+      this.pagina = event.page;
+      this.buscaPacientes();
+    }
   }
   montaFiltros(): Filtro[] {
     const filtros: Filtro[] = [];

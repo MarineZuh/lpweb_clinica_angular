@@ -17,9 +17,13 @@ export class GlobalErrorHandler implements ErrorHandler {
       if (!navigator.onLine) {
         this.gerarMsg('Sem conexão', 'Tente novamente mais tarde!');
       } else {
-
-          this.gerarMsg(`${error.status} - ${error.name}`, `${error.message}`);
-
+          if(error.status === 0) {
+            this.gerarMsg(`${error.status} - ${error.name}`, 'Nenhuma resposta para a requisição!');
+          } else if (error.status === 400) {
+            this.gerarMsg(`${error.status} - ${error.name}`, 'A solicitação não é válida!');
+          } else {
+            this.gerarMsg(`${error.status} - ${error.name}`, `${error.message}`);
+          }
       }
     } else {
       this.gerarMsg(`${error.name}`, `${error.message}`);
