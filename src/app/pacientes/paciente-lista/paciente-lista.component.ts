@@ -59,7 +59,10 @@ export class PacienteListaComponent implements OnInit, OnDestroy {
         debounceTime(600),
         map(valor => valor.trim()),
         distinctUntilChanged(),
-        tap(valor => console.log(`busca por ${valor}`))
+        tap(valor => {
+          this.pagina = 0; // qnd buscar colocar na primeira pagina da busca
+          console.log(`busca por ${valor}`);
+        })
       )
       .subscribe(v => {
         console.log('chamou');
